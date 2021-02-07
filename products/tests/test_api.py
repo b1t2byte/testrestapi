@@ -42,3 +42,10 @@ class ProductsApiTestCase(APITestCase):
         serialized_data = ProductsSerializer(Product.objects.get(pk=1)).data
         self.assertEqual(status.HTTP_200_OK, response.status_code)
         self.assertEqual(serialized_data, response.data)
+
+    def test_delete(self):
+        product = create_product(name='Сыр', price=220)
+        url = reverse('product-detail', args=[1])
+        response = self.client.delete(url)
+        self.assertEqual(status.HTTP_204_NO_CONTENT, response.status_code)
+        self.assertEqual(None, response.data)
