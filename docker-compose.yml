@@ -1,9 +1,6 @@
-version: "3.9"
+version: '3.9'
 
 services:
-  db:
-    volumes:
-      - db.sqlite3:db.sqlite3
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
@@ -11,5 +8,3 @@ services:
       - .:/src
     ports:
       - "8000:8000"
-#    depends_on:
-#      - db
