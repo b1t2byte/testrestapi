@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# TODO зарегистрировать модели
+from products.models import Product
+
+admin.site.register(Product)
